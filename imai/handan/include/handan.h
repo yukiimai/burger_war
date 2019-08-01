@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2019, Panasonic Corporation
+ *  Copyright (c) 2019,  Corporation
  *  All rights reserved.
  */
 #ifndef HANDAN_H_
@@ -17,7 +17,7 @@
  * @class Handan
  * @brief Gazeboのメッセージを読み取り、Robot位置(tf"base_footprint")をpublishする。
  * @authors Yuki Imai(2019)
- * @copyright &copy; 2019, Panasonic Corporation
+ * @copyright &copy; 2019,  Corporation
  */
 class Handan
 {

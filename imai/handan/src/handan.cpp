@@ -1,5 +1,5 @@
 /*
- *  Copyright (c) 2019, Panasonic Corporation
+ *  Copyright (c) 2019,  Corporation
  *  All rights reserved.
  */
 
