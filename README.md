@@ -1,156 +1,23 @@
-# burger_war
+# midori game team burger_war
 ロボットで戦車対戦をするゲームです。
 大砲で撃つ代わりに、カメラでターゲットのARマーカーを読み取ります。<BR>
 
-## 目次
-- インストール
-- 審判サーバー
-- ファイル構成
-- その他
-- 動作環境
+## 追加インストール
+なし
 
-## インストール
-burger_warには**実機**と**シミュレータ**があります。
-
-### 1. ros (kinetic) のインストール
-rosのインストールが終わっている人は`2.このリポジトリをクローン` まで飛ばしてください。
-
-参考  ROS公式サイト<http://wiki.ros.org/ja/kinetic/Installation/Ubuntu>
-上記サイトと同じ手順です。
-ros インストール
-```
-sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-sudo apt-key adv --keyserver 'hkp://ha.pool.sks-keyservers.net:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
-sudo apt-get update
-sudo apt-get install ros-kinetic-desktop-full
-```
-環境設定
-```
-sudo rosdep init
-rosdep update
-echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
-source ~/.bashrc
-```
-ワークスペース作成
-
-参考<http://wiki.ros.org/ja/catkin/Tutorials/create_a_workspace>
-```
-mkdir -p ~/catkin_ws/src
-cd ~/catkin_ws/src
-catkin_init_workspace
-cd ~/catkin_ws/
-catkin_make
-echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
-source ~/.bashrc
-```
-
-### 2. このリポジトリをクローン
-gitをインストールします。
-```
-sudo apt-get install git
-```
-
-turtlr_war リポジトリをクローンします。
-先程作ったワークスペースの`src/`の下においてください。
-```
-cd ~/catkin_ws/src
-git clone https://github.com/OneNightROBOCON/burger_war
-```
-
-このリポジトリのフィールド用のGAZEBOモデルにPATHを通す
-```
-export GAZEBO_MODEL_PATH=$HOME/catkin_ws/src/burger_war/burger_war/models/
-```
-シェルごとに毎回実行するのは面倒なので上記は`~/.bashrc`に書いておくと便利です｡
-
-### 3. 依存ライブラリのインストール
-- pip : pythonのパッケージ管理ツール
-- requests : HTTP lib
-- flask : HTTP server 審判サーバーで使用
-- turtlebot3
-- aruco
-
-```
-# pip のインストール 
-sudo apt-get install python-pip
-#　requests flask のインストール
-sudo pip install requests flask
-# turtlebot3 ロボットモデルのインストール
-sudo apt-get install ros-kinetic-turtlebot3 ros-kinetic-turtlebot3-msgs ros-kinetic-turtlebot3-simulations
-# aruco (ARマーカー読み取りライブラリ）
-sudo apt-get install ros-kinetic-aruco-ros
-```
-
-
-### 5. make
-```
+## make
 cd ~/catkin_ws
 catkin_make
-```
 
-インストールは以上です。
-
-## サンプルの実行
-### シミュレータ
-シミュレータ､ロボット(turtle_bot),審判サーバー､観戦画面のすべてを一発で起動する。大会で使用するスクリプト。<BR>
-最初にburger_warのフォルダまで移動します。
-```
-cd ~/catkin_ws/src/burger_war
-```
-初回のみ、以下のコマンドでGazeboを起動し、モデルデータ等を読み込んでおくとよいです。<BR>
-(初回はGazeboの起動がおそいので)
-```
-gazebo
-```
-次にシミュレーションを起動
-```
-bash scripts/sim_with_judge.sh
-```
-フィールドとロボットが立ち上がったら
-別のターミナルで下記ロボット動作スクリプトを実行
-```
-bash scripts/start.sh
-```
-
-![screenshot](https://user-images.githubusercontent.com/17049327/61606479-7ed49680-ac85-11e9-8c77-5cad3a5db4ed.png)
-
-↑このようなフィールドが現れロボットが2台出現します。
-審判画面も表示されます。
+※install には対応していません！！！！！
 
 
-審判サーバーを立ち上げずにシミュレータとロボットのみ立ち上げる場合
-```
-roslaunch burger_war　setup_sim.launch
-```
-フィールドとロボットが立ち上がったら
-別のターミナルで下記ロボット動作スクリプトを実行
-```
-bash scripts/start.sh
-```
-審判サーバー以外は上記と同じです。
-
-
-### 実機
-センサなどが立ち上がりロボットを動かす準備
-```
-roslaunch burger_war setup.launch
-```
-別のターミナルで
-```
-roslaunch burger_war action.launch
-```
-
-
-## 審判サーバー
-審判サーバーは`burger_war_judge/`以下にあります
-そちらのREADMEを参照ください
+## 実行
+buger_war/launch/your_burger.launch
+をオリジナルに書き換えています。
+サンプルと同様にns入でinclude起動してください。
 
 ## ファイル構成
-各ディレクトリの役割と、特に参加者に重要なファイルについての説明
-
-下記のようなディレクトリ構成になっています。  
-
-```
 burger_war
 ├── burger_war
 │   ├── CMakeLists.txt
@@ -183,23 +50,38 @@ burger_war
 ```
 ↑ディレクトリと特に重要なファイルのみ説明しています。
 
-## 推奨動作環境
+## 動作確認環境
 - Ubuntu 16.04 
 - Ros kinetic
 2018年からkineticで開発しています｡
 
-## Turtlebot3のスペック
-- http://emanual.robotis.com/docs/en/platform/turtlebot3/specifications/
+##gazeboで起動でerror
 
-## その他
-https://github.com/gogo5nta さんに一括でインストールするスクリプトを作成いただいたので本リポジトリにも置いています。
-ご活用ください。
-```
-// ROS(kinetic)を一括インストール
-$ chdmod 777 ./scripts/install_ros_kinetic.sh
-$ ./scripts/install_ros_kinetic.sh
+[ INFO] [1566222710.759609830]: Finished loading Gazebo ROS API Plugin.
+[ INFO] [1566222710.760108475]: waitForService: Service [/gazebo/set_physics_properties] has not been advertised, waiting...
+[ INFO] [1566222710.878206037]: Finished loading Gazebo ROS API Plugin.
+[ INFO] [1566222710.878632161]: waitForService: Service [/gazebo/set_physics_properties] has not been advertised, waiting...
+Killed
+[gazebo_gui-2] process has died [pid 13701, exit code 137, cmd /opt/ros/kinetic/lib/gazebo_ros/gzclient __name:=gazebo_gui __log:=/home/first/.ros/log/6f1c7792-c285-11e9-bca1-fbb7c1c61faa/gazebo_gui-2.log].
+log file: /home/first/.ros/log/6f1c7792-c285-11e9-bca1-fbb7c1c61faa/gazebo_gui-2*.log
+Error [parser.cc:581] Unable to find uri[model://my_ground_plane]
+Error [parser.cc:581] Unable to find uri[model://center_box]
+Error [parser.cc:581] Unable to find uri[model://plate]
+Error [parser.cc:581] Unable to find uri[model://plate]
+Error [parser.cc:581] Unable to find uri[model://plate]
+Error [parser.cc:581] Unable to find uri[model://plate]
+Error [parser.cc:581] Unable to find uri[model://corner_box]
+Error [parser.cc:581] Unable to find uri[model://plate]
+Error [parser.cc:581] Unable to find uri[model://plate]
+Error [parser.cc:581] Unable to find uri[model://corner_box]
+Error [parser.cc:581] Unable to find uri[model://plate]
+Error [parser.cc:581] Unable to find uri[model://plate]
+Error [parser.cc:581] Unable to find uri[model://corner_box]
+Error [parser.cc:581] Unable to find uri[model://plate]
+Error [parser.cc:581] Unable to find uri[model://plate]
+Error [parser.cc:581] Unable to find uri[model://corner_box]
+Error [parser.cc:581] Unable to find uri[model://plate]
+Error [parser.cc:581] Unable to find uri[model://plate]
 
-// Robocon2019に必要な物を一括インストール
-$ chdmod 777 ./scripts/add_robocon2019.sh
-$ ./scripts/add_robocon2019.sh
-```
+と表示されて落ちる。メンバー４名全員のPCで確認
+
