@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="run_three_points" name="run_three_points" type="run_three_points"/>
+</launch>
