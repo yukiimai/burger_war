@@ -11,14 +11,9 @@ EnemyPosition::EnemyPosition()
 
     ROS_INFO("[enemy_position]START");
 
-    image_sub = nh.subscribe("image", 1, &EnemyPosition::image_callback, this);
+    image_sub = nh.subscribe("image_raw", 1, &EnemyPosition::image_callback, this);
 
     enemy_pub = nh.advertise<geometry_msgs::Point>("enemy_pose" , 10);
-
-    //sub_gazebo = nh.subscribe("/gazebo/link_states" , 1 , &EnemyPosition::callback_gazebo , this );
-    //pub_pose = nh.advertise<geometry_msgs::PoseStamped>("robot_pose" , 10 , true);
-
-
 
 }
 
@@ -105,4 +100,6 @@ int main(int argc, char *argv[])
 	ros::init(argc, argv, "enemy_position");
 	EnemyPosition enemy_position_;
 	ros::spin();
+
+	return 0;
 }

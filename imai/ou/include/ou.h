@@ -6,32 +6,30 @@
 #define HANDAN_H_
 
 #include <ros/ros.h>
-#include <geometry_msgs/TransformStamped.h>
 #include <geometry_msgs/Point.h>
-#include <std_msgs/Bool.h>
+#include "geometry_msgs/Twist.h"
+
+
 /**
- * @class Handan
+ * @class Ou
  * @brief 
  * @authors Yuki Imai(2019)
  * @copyright &copy; 2019,  Corporation
  */
-class Handan
+class Ou
 {
 public:
-	Handan();///<コンストラクタ
-	~Handan();///<デストラクタ
+	Ou();///<コンストラクタ
+	~Ou();///<デストラクタ
 protected:
 	ros::Subscriber sub_enemy_pos;
-	ros::Subscriber sub_score_end;
 
-	ros::Publisher pub_score_command;
-	ros::Publisher pub_enemyfollow_command;
+	ros::Publisher cmd_pub;
 
 	void callback_enemy_pos(const geometry_msgs::Point::ConstPtr &msg);
-	void callback_end(const std_msgs::Bool::ConstPtr& msg);
+
 	geometry_msgs::Point last_enemy_pose_;
 	ros::Time last_enemy_time;
-	bool end_flag;
 };	
 
 #endif //HANDAN_H_

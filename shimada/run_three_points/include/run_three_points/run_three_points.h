@@ -54,6 +54,7 @@ public:
   ros::Subscriber sub_judge;
   ros::Subscriber sub_odom;
   ros::Publisher pub_run;  
+  ros::Publisher pub_end;
   
   double odom_dist = 0.0;
   double now_roll = 0.0;

@@ -8,6 +8,9 @@ runThreePoints::runThreePoints()
   sub_odom = nh.subscribe("odom", 5, &runThreePoints::callbackOdom, this);
   pub_run = nh.advertise<geometry_msgs::Twist>("score_vel", 5);
   
+  pub_end = nh.advertise<std_msgs::Bool>("score_end" , 10 , true);
+
+
   num_seq = NUM_SEQ_1;
 }
 
@@ -210,6 +213,17 @@ void runThreePoints::spin()
     runStart();
 
     pub_run.publish(twist_run);    
+
+	std_msgs::Bool out;
+	if(num_seq == NUM_SEQ_END)
+	{
+	out.data = true;
+    }
+    else
+    {
+	out.data = false;
+    }
+    pub_end.publish(out);
 
     ros::spinOnce();
     rate.sleep();

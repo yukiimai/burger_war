@@ -9,15 +9,15 @@ topics:
 -
   name    : score
   topic   : score_vel
-  timeout : 0.5
+  timeout : 1.0
   priority: 80
 -
   name    : search
   topic   : search_vel
-  timeout : 0.5
+  timeout : 1.0
   priority: 90
 -
   name    : ou
   topic   : ou_vel
-  timeout : 0.5
+  timeout : 1.0
   priority: 100
