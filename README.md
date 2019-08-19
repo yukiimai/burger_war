@@ -11,44 +11,10 @@ catkin_make
 
 ※install には対応していません！！！！！
 
-
 ## 実行
 buger_war/launch/your_burger.launch
 をオリジナルに書き換えています。
 サンプルと同様にns入でinclude起動してください。
-
-## ファイル構成
-burger_war
-├── burger_war
-│   ├── CMakeLists.txt
-│   ├── launch  launchファイルの置き場
-│   │   ├── sim_robot_run.launch  シミュレータ上で２台のロボットを動かすlaunchファイル
-│   │   └─ setup_sim.launch  Gazeboシミュレータ上でフィールドの生成ロボットを起動、初期化するlaunchファイル
-│   │
-│   ├── models   GAZEBOシミュレーター用のモデルファイル
-│   ├── package.xml
-│   ├── scripts    pythonで書かれたROSノード
-│   └── world     GAZEBO用の環境ファイル
-│       ├── gen.sh          burger_field.world.emから burger_field.worldを作成するスクリプト
-│       ├── burger_field.world  最新のworldファイル
-│       └── burger_field.world.em  worldファイルのマクロ表記版､こっちを編集する
-|
-├── judge   審判サーバー
-│   ├── judgeServer.py  審判サーバー本体
-│   ├── log   ログがここにたまる
-│   ├── marker_set  マーカーの配置設定ファイル置き場
-│   ├── picture  観戦画面用画像素材
-│   ├── README.md  
-│   ├── test_scripts   初期化などのスクリプト
-│   └── visualizeWindow.py  観戦画面表示プログラム
-|
-├── README.md   これ
-├── rulebook.md  ルールブック
-└── scripts      一発起動スクリプト
-    ├─── sim_with_judge.sh   シミュレーターとロボットと審判サーバーの立ち上げ初期化をすべて行う
-    └──  start.sh             赤サイド、青サイドのロボットを動作させるノードを立ち上げるスクリプト
-```
-↑ディレクトリと特に重要なファイルのみ説明しています。
 
 ## 動作確認環境
 - Ubuntu 16.04 
