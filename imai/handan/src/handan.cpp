@@ -8,7 +8,6 @@
 Handan::Handan()
 {
 	ros::NodeHandle nh;
-	sub_gazebo = nh.subscribe("/gazebo/link_states" , 1 , &Handan::callback_gazebo , this );
 	pub_pose = nh.advertise<geometry_msgs::PoseStamped>("robot_pose" , 10 , true);
 	tf2_brocast = new tf2_ros::TransformBroadcaster();
 }

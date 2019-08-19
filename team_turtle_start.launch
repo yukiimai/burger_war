@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="robot_name" default=""/>
+
+<!-- sample program node -->
+	<!--
+    <node pkg="burger_war" type="randomRun.py" name="randomRun" output="screen"/>
+-->
+
+    <!-- You can change control program  -->
+
+<!-- imai -->
+
+<include file="$(find twist_mux)/launch/twist_mux.launch" />
+
+
+
+
+
+
+
+
+
+
+    <!-- End of your space  -->
+</launch>
+
