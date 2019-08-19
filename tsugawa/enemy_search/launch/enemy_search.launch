@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="enemy_search" name="enemy_search_node" type="enemy_search_node"/>
+</launch>
