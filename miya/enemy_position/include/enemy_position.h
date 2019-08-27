@@ -35,6 +35,9 @@ protected:
 
          void image_callback(const sensor_msgs::ImageConstPtr& msg);
          cv::Mat inImage;
+	cv::Mat maskImage0;
+	cv::Mat maskImage1;
+	cv::Mat maskImage2;
 };
 
 #endif //HANDAN_H_
