@@ -50,11 +50,11 @@ void EnemyPosition::image_callback(const sensor_msgs::ImageConstPtr& msg)
       int b_max = 90;
       int g_min = 0;
       int g_max = 90;
-      int r_min = 150;
+      int r_min = 100;
       int r_max = 255;
 
       int open_num = 1;         // 画像膨張回数
-      int close_num = 4;        // 画像縮小回数
+      int close_num = 2;        // 画像縮小回数
 
       int th_ditect = 3;       // 敵検知最小pixcel
 //      float th_unditect_rate = 0.5;
@@ -77,7 +77,7 @@ void EnemyPosition::image_callback(const sensor_msgs::ImageConstPtr& msg)
       for (int row = 0; row < row_num; row++) {
             for (int col = 0; col < cols_num; col++) {
                 // 二値化したマスク画像の255のpixcelを数える
-                if (maskImage2.at<cv::Scalar>(row, col) == cv::Scalar(255)) {
+                if (maskImage2.at<cv::Scalar>(row, col) != cv::Scalar(0)) {
                     cnt_black++;
                 }
             }
