@@ -53,10 +53,10 @@ void EnemyPosition::image_callback(const sensor_msgs::ImageConstPtr& msg)
       int r_min = 150;
       int r_max = 255;
 
-      int open_num = 4;         // 画像膨張回数
-      int close_num = 5;        // 画像縮小回数
+      int open_num = 1;         // 画像膨張回数
+      int close_num = 4;        // 画像縮小回数
 
-      int th_ditect = 20;       // 敵検知最小pixcel
+      int th_ditect = 3;       // 敵検知最小pixcel
 //      float th_unditect_rate = 0.5;
 
       int cnt_black = 0;        // 閾値値超えpixcelカウント
